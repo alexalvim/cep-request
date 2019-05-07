@@ -5,9 +5,9 @@ import { cepFetchRequest } from '../../actions/cep';
 
 import RowInfo from '../../components/RowInfo';
 import Button from '../../components/Button';
-import { Container, ContentBox, CEPInput, FormWrapper } from './styles';
+import { Container, ContentBox, CEPInput, FormWrapper, InfoText } from './styles';
 
-class Home extends React.Component {
+export class Home extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -56,7 +56,7 @@ class Home extends React.Component {
             </FormWrapper>
           </form>
         </ContentBox>
-        {isLoading && 'Carregando'}
+        {isLoading && <InfoText>Carregando</InfoText>}
         {!isLoading && ((cepNumber && cepNumber) || hasError) &&
           <ContentBox>
             {!isLoading && cepNumber && cepNumber !== '' && 
@@ -64,18 +64,24 @@ class Home extends React.Component {
                 <RowInfo
                   label='CEP'
                   value={cepNumber} />
-                <RowInfo
-                  label='Estado'
-                  value={uf} />
-                <RowInfo
-                  label='Cidade'
-                  value={locale} />
-                <RowInfo
-                  label='Logradouro'
-                  value={place} />
+                {uf && uf !== '' &&
+                  <RowInfo
+                    label='Estado'
+                    value={uf} />
+                }
+                {locale && locale !== '' &&
+                  <RowInfo
+                    label='Cidade'
+                    value={locale} />
+                }
+                {place && place !== '' &&
+                  <RowInfo
+                    label='Logradouro'
+                    value={place} />
+                }
               </Fragment>
             }
-            {!isLoading && hasError && 'Erro ao buscar CEP'}
+            {!isLoading && hasError && <InfoText>Erro ao buscar CEP</InfoText>}
           </ContentBox>
         }
       </Container>

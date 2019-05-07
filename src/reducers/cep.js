@@ -1,4 +1,4 @@
-const initialState = {
+export const initialState = {
   cepNumber: '',
   uf: '',
   locale: '',
@@ -6,7 +6,8 @@ const initialState = {
   hasError: false,
   isLoading: false,
 };
-export const cepReducer = (state = initialState, action) => {
+
+const cepReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'CEP_FETCH_SUCCESS':
       return {
@@ -37,3 +38,5 @@ export const cepReducer = (state = initialState, action) => {
       return state;
   }
 };
+
+export default cepReducer

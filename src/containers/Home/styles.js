@@ -26,6 +26,7 @@ const ContentBox = styled.div`
 
 const CEPInput = styled.input`
   border: solid 1px ${Colors.darkGray};
+  color: ${Colors.darkestColor};
   font-size: ${Fonts.medium};
   flex-grow: 1;
   margin-right: ${Spaces.base};
@@ -36,9 +37,16 @@ const FormWrapper = styled.div`
   display: flex;
 `;
 
+const InfoText = styled.span`
+  color: ${Colors.darkGray};
+  display: block;
+  font-size: ${Fonts.medium};
+`;
+
 export {
   Container,
   ContentBox,
   CEPInput,
   FormWrapper,
+  InfoText,
 };
